@@ -28,10 +28,10 @@ git clone https://github.com/huang0h/c4c-challenge-sample.git
 ## Design Decisions
 
 ## Reflection
-- # What I learned
+- ### What I learned
   -
-- # What I would have done differently with more time
+- ### What I would have done differently with more time
   -
-- # Issues?
-  - I'd say the first issue I ran into off the bat was being overwhelmed with the idea of tackling this project in a week with little to no experience or knowledge of the technologies required for the project. I faced this by setting out a timeline of spending a few days learning as much as I could while also keeping in mind the goal of the project. I noticed that the project required quite a deep understanding of React which was something I was not familiar with at all. 
-  - Time issue: I'll be on vacation from June 5th-13th so I'm losing quite a lot of time that I could've spent making a much better outcome. To tackle this issue, I spent as much time as I could during my free time working on the project since it was sent out.
+- ### Issues?
+  - The biggest issue I faced was that I had no experience with React and very minimal experience with Javascript. Because of this, I felt quite overwhelmed at first but I set out to learn as much as I could within the past few days. I did this by watching numereous online videos and read up on React's documentation and tutorials on the React website. 
+  - Another main issue currently is that I'll be on vacation fom June 5th-13th, which is right up to the deadline for the project. I understand I'm losing a good amount of time due to this so what I've done is devote as much of my free time as I could these past few days, aside from work, to complete the tech challenge. In addition, I anticipate to spend more time in coming days as well as on the plane to fully optimize the final outcome.
