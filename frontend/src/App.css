@@ -28,6 +28,12 @@ h1.title {
   padding-bottom: 25px;
 }
 
+/* Form */
+
+form {
+  text-align: center;
+}
+
 /* PartnerTile */
 
 .partner-tile {
@@ -48,6 +54,10 @@ h1.title {
 .partner-thumbnail {
   max-width: 330px;
   max-height: 150px;
+}
+
+.partner-info h3 {
+  color: #2cf116;
 }
 
 .partner-info {

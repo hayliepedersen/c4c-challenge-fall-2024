@@ -4,13 +4,15 @@ const app = express();
 const port = 4000;
 
 // Some partner data
-const partners = {
-  "sftt": {
-    "thumbnailUrl": "https://c4cneu-public.s3.us-east-2.amazonaws.com/Site/sfft-project-page.png",
-    "name": "Speak For The Trees",
-    "description": "Speak for the Trees Boston aims to improve the size and health of the urban forest in the greater Boston area, with a focus on under-served and under-canopied neighborhoods. They work with volunteers to inventory (collect data) trees, plant trees, and educate those about trees. C4C has built a tree stewardship application for SFTT that allows users to participate in conserving Boston's urban forest. Across Boston, hundreds of trees have been adopted and cared for.",
+const partners = [
+  {
+    id: "sftt",
+    thumbnailUrl: "https://c4cneu-public.s3.us-east-2.amazonaws.com/Site/sfft-project-page.png",
+    name: "Speak For The Trees",
+    description: "Speak for the Trees Boston aims to improve the size and health of the urban forest in the greater Boston area, with a focus on under-served and under-canopied neighborhoods. They work with volunteers to inventory (collect data) trees, plant trees, and educate those about trees. C4C has built a tree stewardship application for SFTT that allows users to participate in conserving Boston's urban forest. Across Boston, hundreds of trees have been adopted and cared for.",
+    active: true,
   }
-}
+];
 
 /* 
   APPLICATION MIDDLEWARE
@@ -34,7 +36,26 @@ app.use((req, res, next) => {
 */
 
 app.get('/', (req, res) => {
-  res.status(200).send(partners);
+  res.json(partners);
+})
+
+app.post('/add-partner', (req, res) => {
+  const partner = req.body;
+  partners.push(partner);
+  console.log('Received partner:', partner);
+  console.log(partners);
+  res.status(201).send('Partner added');
+})
+
+app.delete('/partners/:id', (req, res) => {
+  const { id } = req.params;
+  const index = partners.findIndex(partner => partner.id === id);
+  if (index !== -1) {
+    partners.splice(index, 1);
+    res.status(200).send('Partner deleted');
+  } else {
+    res.status(404).send('Partner not found');
+  }
 })
 
 // Start the backend

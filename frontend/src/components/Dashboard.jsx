@@ -5,24 +5,116 @@ import PartnerTile from './PartnerTile';
   The top-level component containing everything relevant to the dashboard,
   including information on each partner
 */
+
 function Dashboard() {
 
-  const [partners, setPartners] = useState({});
+  const [partners, setPartners] = useState([]);
+  const [id, setId] = useState('');
+  const [thumbnailUrl, setThumbnailUrl] = useState('');
+  const [name, setName] = useState('');
+  const [description, setDescription] = useState('');
+  const [active, setActive] = useState(false);
+  
+  function handleNewPartnerData(e) {
+    setPartners(e.target.value);
+  }
 
   // Load all partners on initial page load 
   useEffect(() => {
-    fetch('http://localhost:4000', {
-      method: 'GET',
+    fetch('http://localhost:4000')
+    .then(res => {
+      return res.json()
     })
-    .then((res) => res.json())
-  }, [])
+    .then(data => {
+      setPartners(data)
+    });
+  }, []);
+
+  const handleDelete = (id) => {
+    fetch(`http://localhost:4000/partners/${id}`, {
+      method: 'DELETE',
+    }).then((res) => {
+      if (res.ok) {
+        setPartners(partners.filter((partner) => partner.id !== id)); 
+      } else {
+        console.error('Failed to delete partner');
+      }
+    }).catch((error) => {
+      console.error('Error:', error);
+    })
+  }
+
+  const handleSubmit = (e) => {
+    const partner = { id, thumbnailUrl, name, description, active };
+
+    fetch('http://localhost:4000/add-partner', {
+      method: 'POST',
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(partner)
+    })
+  }
 
   return (
+    <>
+    <form onSubmit={handleSubmit}>
+      <h2>Add Partner</h2>
+      <label>
+        Partner Name:{' '}
+        <input
+          type="text"
+          id="name"
+          value={name}
+          autoComplete="off"
+          onChange={(e) => {
+            setName(e.target.value);
+            setId(e.target.value);
+          }}
+          required
+        />
+      </label>
+      <br />
+      <label>
+        Partner Logo Source:{' '}
+        <input
+          type="text"
+          id="thumbnailUrl"
+          value={thumbnailUrl}
+          autoComplete="off"
+          onChange={(e) => setThumbnailUrl(e.target.value)}
+          required
+        />
+      </label>
+      <br />
+      <label>
+        Partner Description:{' '}
+        <input
+          type="text"
+          id="description"
+          value={description}
+          autoComplete="off"
+          onChange={(e) => setDescription(e.target.value)}
+          required
+        />
+      </label>
+      <br />
+      <label>
+        Active? 
+        <input
+          type="checkbox"
+          id="active"
+          value={active}
+          onChange={(e) => setActive(!active)}
+        />
+      </label>
+      <br />
+      <input type="submit"></input>
+    </form>
     <div id="main-content">
       <div id="main-partners-grid">
-        <PartnerTile partnerData={{}} />
+      {partners.map(partner => (<PartnerTile key={partner.id} partnerData={partner} onDelete={handleDelete} />))}
       </div>
     </div>
+    </>
   )
 }
 
