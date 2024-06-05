@@ -9,6 +9,7 @@ import PartnerTile from './PartnerTile';
 function Dashboard() {
 
   const [partners, setPartners] = useState([]);
+  const [showForm, setShowForm] = useState(false);
   const [id, setId] = useState('');
   const [thumbnailUrl, setThumbnailUrl] = useState('');
   const [name, setName] = useState('');
@@ -56,8 +57,14 @@ function Dashboard() {
 
   return (
     <>
+    <div id="form-button">
+      <button className="form-button" onClick={() => setShowForm(!showForm)}>
+          {showForm ? '- Add Partner' : 'Add Partner'}
+      </button>
+    </div>
+
+    {showForm && (
     <form onSubmit={handleSubmit}>
-      <h2>Add Partner</h2>
       <label>
         Partner Name:{' '}
         <input
@@ -97,6 +104,7 @@ function Dashboard() {
         />
       </label>
       <br />
+      <div className="checkbox">
       <label>
         Active? 
         <input
@@ -106,9 +114,12 @@ function Dashboard() {
           onChange={(e) => setActive(!active)}
         />
       </label>
+      </div>
       <br />
-      <input type="submit"></input>
+      <input id="submit" type="submit"></input>
     </form>
+    )}
+ 
     <div id="main-content">
       <div id="main-partners-grid">
       {partners.map(partner => (<PartnerTile key={partner.id} partnerData={partner} onDelete={handleDelete} />))}
