@@ -1,13 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap');
+
 /* 
   ================
   COMPONENT STYLES
   ================
 */
 
+* {
+  font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+button {
+  cursor: pointer;
+}
+
 /* MainDisplay */
 
 #main-content {
-  width: 1000px;
   padding: 20px 30px;
   margin: auto;
 }
@@ -21,24 +40,81 @@
   gap: 25px;
 }
 
-h1.title {
-  text-align: center;
-  font-size: 24pt;
+header {
+  background: url("https://images.pexels.com/photos/5627116/pexels-photo-5627116.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2") no-repeat center center; 
+  background-size: cover; 
+  background-position: 50% 40%;
+  height: 280px;
+}
 
-  padding-bottom: 25px;
+header h1 {
+  color: #1d427a;
+  text-align: center;
+  font-size: 48px;
+  margin-top: 0;
+  font-weight: 200;
+  
+}
+
+.title {
+  color: white;
+  width: 100%;
+  font-size: 12pt;
+  text-align: left; 
+  padding-left: 10px;
+  padding-top: 10px;
 }
 
 /* Form */
 
+#form-button {
+  padding-top: 20px;
+}
+
+.form-button {
+  width: 400px;
+  border: 0 solid;
+  background-color: #3E67A4;
+  text-transform: uppercase;
+  margin: auto;
+  display: block;
+  border-radius: 99rem;
+  border-width: 2px;
+  padding: 0.8rem 3rem;
+  color: white;
+}
+
 form {
+  margin: 0 auto;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  width: 340px;
   text-align: center;
+}
+
+form .checkbox {
+  display: inline-flex;
+  align-items: left;
+  gap: 5px;
+}
+
+#submit {
+  margin: 0 auto;
+  width: 120px;
+  cursor: pointer;
+  background-color: #143361;
+  color: white;
+  display: block;
+  border-radius: 40rem;
+  border-width: 2px;
+  padding: 0.2rem 1rem;
 }
 
 /* PartnerTile */
 
 .partner-tile {
-  width: 450px;
-  height: 400px;
+  width: 460px;
+  height: 545px;
 
   display: flex;
   flex-direction: column;
@@ -51,15 +127,30 @@ form {
   padding: 25px;
 }
 
-.partner-thumbnail {
-  max-width: 330px;
-  max-height: 150px;
+hr {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 100%;
 }
 
-.partner-info h3 {
-  color: #2cf116;
+.partner-thumbnail {
+  max-width: 100%;   
+  max-height: 200px;  
+  width: auto;    
+  height: auto;  
+  display: block;
+  margin: auto;
+  max-width: 100%;
 }
 
 .partner-info {
   font-size: 0.9em;
+  align-items: left;
+}
+
+/* DeleteButton */
+.partner-info button {
+  width: 80px;
+  background-color: #817f7f;
+  color: white;
 }
