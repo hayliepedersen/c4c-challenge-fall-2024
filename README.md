@@ -1,6 +1,3 @@
-This is the starter code for Code4Community's technical challenge for Fall 2024. 
-For more detailed information about each of the parts of this starter code, check out the [`INFO.md`](INFO.md) file
-
 ## Prerequisites
 
 If you don't have them already, you'll need to install Node.js/NPM and Git:
@@ -9,19 +6,14 @@ If you don't have them already, you'll need to install Node.js/NPM and Git:
    - Node and NPM are installed together
 - Git - install [here](https://git-scm.com/downloads)
 
-## Setup Instructions
+## Starting the Application
 
-1. Clone this repo on to your computer. You can do so with the [desktop app](https://desktop.github.com/), or in a terminal with the following:
-```
-git clone https://github.com/huang0h/c4c-challenge-sample.git
-```
+1. Clone this repo on to your computer
 2. In a terminal, run `npm install` **at the root of this project** to install the required packages
 3. Run `npm run dev` **at the root of this project** to start the app locally
 4. Visit `http://localhost:3000` to view the website
     
     4a. The backend will be available at `http://localhost:4000`
-
-## Starting the Application
 
 ## Overview
 - The website is an admin dashboard for Code4Community's partners. The main aspect of the application is the ability to add a partner to a dashboard of C4C's partners. This is done by clicking an Add Partner button in the center of the screen which then drops down a form that can be used to enter partner information. When an admin clicks submit, a new tile is added to the dashboard showing all the information on the partner they had just entered. An admin can also simply view all partners as well as gain insight into each partner. On top of this, admins can view if a partner is active meaning currently working with C4C or inactive and not currently working with C4C. Displayed also on each partner tile which is shown in a grid format on the page, is the title of the partner and a thumbnail of their company. Each of these tiles can be deleted by clicking a delete button at the bottom of each tile. Any changes made by an admin viewing the website on one tab can be seen by another admin on a different tab as all application routes are handled by a single server.
